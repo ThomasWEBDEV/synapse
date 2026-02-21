@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: synapse-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: synapse_db
+      MYSQL_USER: synapse_user
+      MYSQL_PASSWORD: synapse_pass
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  backend:
+    build: ./backend
+    container_name: synapse-backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/synapse_db
+      SPRING_DATASOURCE_USERNAME: synapse_user
+      SPRING_DATASOURCE_PASSWORD: synapse_pass
+
+volumes:
+  mysql_data:
