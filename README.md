@@ -102,3 +102,20 @@ GitHub : https://github.com/ThomasWEBDEV
 ## Licence
 
 MIT License — Libre utilisation a des fins educatives et professionnelles.
+
+## Lancement du frontend
+```bash
+cd frontend
+npm run serve
+```
+
+Dashboard disponible sur : http://localhost:3000
+
+## Lancement complet (API + BDD)
+```bash
+docker-compose up -d
+```
+
+API disponible sur : http://localhost:8080/api/flux  
+Health check : http://localhost:8080/api/health  
+Stats : http://localhost:8080/api/stats
