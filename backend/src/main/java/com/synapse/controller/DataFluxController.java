@@ -2,6 +2,7 @@ package com.synapse.controller;
 
 import com.synapse.model.DataFlux;
 import com.synapse.service.DataFluxService;
+import com.synapse.service.FluxValidatorService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -11,9 +12,11 @@ import java.util.List;
 public class DataFluxController {
 
     private final DataFluxService service;
+    private final FluxValidatorService validator;
 
-    public DataFluxController(DataFluxService service) {
+    public DataFluxController(DataFluxService service, FluxValidatorService validator) {
         this.service = service;
+        this.validator = validator;
     }
 
     @GetMapping
@@ -28,6 +31,7 @@ public class DataFluxController {
 
     @PostMapping
     public ResponseEntity<DataFlux> create(@RequestBody DataFlux flux) {
+        validator.validate(flux);
         return ResponseEntity.ok(service.create(flux));
     }
 
