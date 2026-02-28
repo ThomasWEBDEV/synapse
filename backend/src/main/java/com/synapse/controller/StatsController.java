@@ -22,10 +22,10 @@ public class StatsController {
     public ResponseEntity<Map<String, Long>> getStats() {
         return ResponseEntity.ok(Map.of(
             "total",   repository.count(),
-            "pending", repository.findByStatus(FluxStatus.PENDING).size(),
-            "success", repository.findByStatus(FluxStatus.SUCCESS).size(),
-            "failed",  repository.findByStatus(FluxStatus.FAILED).size(),
-            "retry",   repository.findByStatus(FluxStatus.RETRY).size()
+            "pending", (long) repository.findByStatus(FluxStatus.PENDING).size(),
+            "success", (long) repository.findByStatus(FluxStatus.SUCCESS).size(),
+            "failed",  (long) repository.findByStatus(FluxStatus.FAILED).size(),
+            "retry",   (long) repository.findByStatus(FluxStatus.RETRY).size()
         ));
     }
 }
