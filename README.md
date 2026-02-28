@@ -11,11 +11,11 @@ API middleware d'intégration de données entre systèmes d'information (ERP/WMS
 ## Projet
 
 Simulation d'une infrastructure middleware réelle permettant la circulation,
-la validation et la transformation de données entre logiciels internes.
+la validation et la transformation de données entre systèmes d'information.
 
-Ce projet reproduit le besoin métier de Kermené (17ème entreprise agroalimentaire
-française, filiale E.Leclerc) : remplacer les outils qui font circuler les
-informations entre les logiciels de production et de logistique.
+Ce projet reproduit un besoin métier concret dans le secteur industriel :
+assurer la communication entre les logiciels de production et de logistique
+via une API centralisée et maintenable.
 
 ## Contexte
 
@@ -102,7 +102,7 @@ docker-compose up -d
 cd frontend && npm run serve
 ```
 
-API disponible sur : http://localhost:8080/api  
+API disponible sur : http://localhost:8080/api
 Dashboard disponible sur : http://localhost:8081
 
 ## Auteur
