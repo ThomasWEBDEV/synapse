@@ -1,11 +1,12 @@
 # Synapse — Roadmap
 
-## Phase 1 — Tests unitaires ✅ (en cours)
+## Phase 1 — Tests unitaires (terminée)
 - JUnit 5 + Mockito
-- Tests DataFluxService, FluxValidatorService
-- Objectif : 80% de couverture
+- FluxValidatorServiceTest — 4 tests (validation champs)
+- DataFluxServiceTest — 4 tests (CRUD et statuts)
+- Résultat : 9 tests, 0 échec, BUILD SUCCESS
 
-## Phase 2 — Jenkins CI/CD
+## Phase 2 — Jenkins CI/CD (en cours)
 - Jenkins dockerisé
 - Pipeline : build → test → package
 - Déclenchement automatique sur push Git
