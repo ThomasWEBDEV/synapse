@@ -27,6 +27,8 @@ compétences techniques concrètes en :
 - Architecture middleware et intégration de systèmes
 - Développement frontend de monitoring (Vue.js)
 - Containerisation et déploiement (Docker)
+- Tests unitaires (JUnit 5 + Mockito)
+- Pipeline CI/CD (Jenkins)
 - Conception de bases de données (MySQL)
 
 ## Résultats
@@ -43,6 +45,12 @@ POST /api/flux    → Création d'un flux ERP → WMS
 
 ![Stats API](screenshots/api-stats.jpg)
 
+### Pipeline CI/CD Jenkins
+
+![Pipeline Jenkins](screenshots/jenkins-pipeline-success.jpg)
+
+![Tests Jenkins](screenshots/jenkins-tests-success.jpg)
+
 ## Architecture
 ```
 [ERP Simule] ──> [API Spring Boot] ──> [WMS Simule]
@@ -54,40 +62,45 @@ POST /api/flux    → Création d'un flux ERP → WMS
 
 ## Stack Technique
 
-| Couche          | Technologie            |
-|-----------------|------------------------|
-| Back-end        | Java 21 + Spring Boot 3|
-| Front-end       | Vue.js 3               |
-| Base de donnees | MySQL 8                |
-| Conteneurisation| Docker + Compose       |
-| CI/CD           | Jenkins (prevu)        |
-| Cloud (cible)   | Google Cloud Platform  |
-| Versioning      | Git / GitHub           |
+| Couche           | Technologie             |
+|------------------|-------------------------|
+| Back-end         | Java 21 + Spring Boot 3 |
+| Front-end        | Vue.js 3                |
+| Base de données  | MySQL 8                 |
+| Conteneurisation | Docker + Compose        |
+| CI/CD            | Jenkins                 |
+| Tests            | JUnit 5 + Mockito       |
+| Cloud (cible)    | Google Cloud Platform   |
+| Versioning       | Git / GitHub            |
 
 ## Structure du Projet
 ```
 synapse/
-├── backend/          # API Spring Boot (Java)
-├── frontend/         # Dashboard Vue.js
-├── docs/             # Specifications, MCD/MLD, architecture
-├── scripts/          # Scripts utilitaires
-├── screenshots/      # Captures dashboard et API
+├── backend/           # API Spring Boot (Java)
+├── frontend/          # Dashboard Vue.js
+├── erp/               # Simulateur ERP (en cours)
+├── wms/               # Simulateur WMS (en cours)
+├── docs/              # Spécifications, architecture
+├── screenshots/       # Captures dashboard, API, Jenkins
+├── Jenkinsfile        # Pipeline CI/CD
 ├── docker-compose.yml
 └── README.md
 ```
 
-## Fonctionnalites
+## Fonctionnalités
 
-- [x] API REST Spring Boot (reception flux ERP)
-- [x] Validation et transformation des donnees
+- [x] API REST Spring Boot (réception flux ERP)
+- [x] Validation et transformation des données
 - [x] Persistance MySQL (historique des flux)
-- [x] Dashboard Vue.js (statut des flux en temps reel)
-- [x] Dockerisation complete
+- [x] Dashboard Vue.js (statut des flux en temps réel)
+- [x] Dockerisation complète
 - [x] Gestion des statuts (PENDING, SUCCESS, FAILED, RETRY)
 - [x] Endpoint statistiques
+- [x] Tests unitaires (9 tests, 0 échec)
+- [x] Pipeline Jenkins (build, test, package)
+- [ ] Simulateurs ERP et WMS
 - [ ] Retry automatique
-- [ ] Pipeline Jenkins
-- [ ] Deploiement GCP
+- [ ] Déploiement GCP
 
 ## Lancement
 ```bash
@@ -95,7 +108,7 @@ synapse/
 git clone https://github.com/ThomasWEBDEV/synapse.git
 cd synapse
 
-# Lancer l'API + base de donnees
+# Lancer l'API + base de données + Jenkins
 docker-compose up -d
 
 # Lancer le dashboard
@@ -104,15 +117,16 @@ cd frontend && npm run serve
 
 API disponible sur : http://localhost:8080/api
 Dashboard disponible sur : http://localhost:8081
+Jenkins disponible sur : http://localhost:8090
 
 ## Auteur
 
 Thomas
 
-Etudiant BAC+5 Concepteur-Developpeur Full Stack
-Recherche alternance developpement — Septembre 2026
+Etudiant BAC+5 Concepteur-Développeur Full Stack
+Recherche alternance développement - Septembre 2026
 GitHub : https://github.com/ThomasWEBDEV
 
 ## Licence
 
-MIT License — Libre utilisation a des fins educatives et professionnelles.
+MIT License — Libre utilisation à des fins éducatives et professionnelles.
