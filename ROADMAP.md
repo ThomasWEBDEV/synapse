@@ -6,15 +6,16 @@
 - DataFluxServiceTest — 4 tests (CRUD et statuts)
 - Résultat : 9 tests, 0 échec, BUILD SUCCESS
 
-## Phase 2 — Jenkins CI/CD (en cours)
-- Jenkins dockerisé
-- Pipeline : build → test → package
-- Déclenchement automatique sur push Git
+## Phase 2 — Jenkins CI/CD (terminée)
+- Jenkins dockerisé sur port 8090
+- Pipeline : Checkout - Build - Tests - Package
+- 9 tests automatisés a chaque push Git
+- Résultat : BUILD SUCCESS
 
-## Phase 3 — ERP + WMS simulés
+## Phase 3 — ERP + WMS simulés (en cours)
 - API ERP : envoi automatique de flux vers Synapse
 - API WMS : réception et accusé de réception
-- Communication complète ERP → Synapse → WMS
+- Communication complète ERP -> Synapse -> WMS
 
 ## Phase 4 — Déploiement GCP
 - Google Cloud Run (backend)
