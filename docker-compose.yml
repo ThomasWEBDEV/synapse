@@ -30,6 +30,16 @@ services:
       mysql:
         condition: service_healthy
 
+  erp:
+    build: ./erp
+    container_name: synapse-erp
+    ports:
+      - "8081:8081"
+    environment:
+      SYNAPSE_API_URL: http://backend:8080/api/flux
+    depends_on:
+      - backend
+
   jenkins:
     image: jenkins/jenkins:lts
     container_name: synapse-jenkins
