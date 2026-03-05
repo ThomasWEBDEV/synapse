@@ -12,12 +12,12 @@
 - 9 tests automatisés a chaque push Git
 - Résultat : BUILD SUCCESS
 
-## Phase 3 — ERP + WMS simulés (en cours)
-- API ERP : envoi automatique de flux vers Synapse
-- API WMS : réception et accusé de réception
-- Communication complète ERP -> Synapse -> WMS
+## Phase 3 — ERP + WMS simulés (terminée)
+- ERP : envoi automatique de commandes vers Synapse toutes les 30s
+- WMS : réception et traitement des flux
+- Communication complète ERP -> Synapse -> WMS opérationnelle
 
-## Phase 4 — Déploiement GCP
+## Phase 4 — Déploiement GCP (en cours)
 - Google Cloud Run (backend)
 - Cloud SQL (MySQL managé)
 - URL publique accessible
