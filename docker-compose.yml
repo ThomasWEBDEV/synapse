@@ -29,6 +29,12 @@ services:
     depends_on:
       mysql:
         condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8080/api/health || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
 
   erp:
     build: ./erp
@@ -38,7 +44,8 @@ services:
     environment:
       SYNAPSE_API_URL: http://backend:8080/api/flux
     depends_on:
-      - backend
+      backend:
+        condition: service_healthy
 
   jenkins:
     image: jenkins/jenkins:lts
