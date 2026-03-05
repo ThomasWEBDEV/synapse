@@ -17,10 +17,11 @@
 - WMS : réception et traitement des flux
 - Communication complète ERP -> Synapse -> WMS opérationnelle
 
-## Phase 4 — Déploiement GCP (en cours)
-- Google Cloud Run (backend)
-- Cloud SQL (MySQL managé)
-- URL publique accessible
+## Phase 4 — Déploiement GCP (terminée)
+- Image Docker poussée sur Google Artifact Registry
+- API déployée sur Google Cloud Run
+- URL publique : https://synapse-backend-852589566429.europe-west1.run.app
+- Profil Spring Boot GCP avec base H2 en mémoire
 
 ---
 
@@ -33,5 +34,6 @@
 | MySQL 8 | Persistance |
 | Docker | Conteneurisation |
 | Jenkins | CI/CD pipeline |
-| GCP | Déploiement cloud |
+| GCP Cloud Run | Déploiement cloud |
+| GCP Artifact Registry | Stockage images Docker |
 | JUnit 5 + Mockito | Tests unitaires |
