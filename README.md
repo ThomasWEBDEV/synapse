@@ -51,13 +51,21 @@ POST /api/flux    → Création d'un flux ERP → WMS
 
 ![Tests Jenkins](screenshots/jenkins-tests-success.jpg)
 
+### ERP simulé - envoi automatique de commandes
+
+L'ERP génère et envoie automatiquement des commandes vers Synapse toutes les 30 secondes :
+```
+Commande envoyée à Synapse : CMD-2C8FC293
+Commande envoyée à Synapse : CMD-0E936C02
+```
+
 ## Architecture
 ```
 [ERP Simule] ──> [API Spring Boot] ──> [WMS Simule]
-                        │
-                   [MySQL - Logs]
-                        │
-                [Vue.js - Monitoring]
+      |                  |
+      |             [MySQL - Logs]
+      |                  |
+      └──────── [Vue.js - Monitoring]
 ```
 
 ## Stack Technique
@@ -76,9 +84,9 @@ POST /api/flux    → Création d'un flux ERP → WMS
 ## Structure du Projet
 ```
 synapse/
-├── backend/           # API Spring Boot (Java)
-├── frontend/          # Dashboard Vue.js
-├── erp/               # Simulateur ERP (en cours)
+├── backend/           # API Spring Boot - middleware central
+├── frontend/          # Dashboard Vue.js - monitoring
+├── erp/               # Simulateur ERP - envoi automatique de commandes
 ├── wms/               # Simulateur WMS (en cours)
 ├── docs/              # Spécifications, architecture
 ├── screenshots/       # Captures dashboard, API, Jenkins
@@ -98,7 +106,8 @@ synapse/
 - [x] Endpoint statistiques
 - [x] Tests unitaires (9 tests, 0 échec)
 - [x] Pipeline Jenkins (build, test, package)
-- [ ] Simulateurs ERP et WMS
+- [x] Simulateur ERP - envoi automatique toutes les 30s
+- [ ] Simulateur WMS - réception et traitement
 - [ ] Retry automatique
 - [ ] Déploiement GCP
 
@@ -108,23 +117,25 @@ synapse/
 git clone https://github.com/ThomasWEBDEV/synapse.git
 cd synapse
 
-# Lancer l'API + base de données + Jenkins
+# Lancer tous les services
 docker-compose up -d
 
 # Lancer le dashboard
 cd frontend && npm run serve
 ```
 
-API disponible sur : http://localhost:8080/api
-Dashboard disponible sur : http://localhost:8081
-Jenkins disponible sur : http://localhost:8090
+| Service  | URL                        |
+|----------|----------------------------|
+| API      | http://localhost:8080/api  |
+| Dashboard| http://localhost:8081      |
+| Jenkins  | http://localhost:8090      |
 
 ## Auteur
 
 Thomas
 
 Etudiant BAC+5 Concepteur-Développeur Full Stack
-Recherche alternance développement - Septembre 2026
+Alternance développement - Septembre 2026 - Bretagne
 GitHub : https://github.com/ThomasWEBDEV
 
 ## Licence
