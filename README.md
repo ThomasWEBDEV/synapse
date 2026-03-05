@@ -144,7 +144,7 @@ cd frontend && npm run serve
 | API      | http://localhost:8080/api  |
 | Dashboard| http://localhost:8083      |
 | Jenkins  | http://localhost:8090      |
-| ERP      | http://localhost:8081      |
+| ERP      | http://localhost:8083      |
 | WMS      | http://localhost:8082      |
 
 ## Auteur
